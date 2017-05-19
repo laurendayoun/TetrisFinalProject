@@ -6,7 +6,6 @@ import javafx.scene.Scene;
 import javafx.application.Application;
 import java.util.ArrayList;
 import javafx.stage.Stage;
-import javafx.scene.paint.Color;
 import javafx.scene.layout.Pane;
 
 public class TetrisPieces extends Application {
@@ -21,11 +20,14 @@ public class TetrisPieces extends Application {
         LPiece L = new LPiece(100, 60);
         ArrayList<TetrisBlock> l = L.getpiece();
 
+        Mid F = new Mid(180, 80);
+        ArrayList<TetrisBlock> f = F.getpiece();
+
         Pane root = new Pane();
 
         for (int n = 0; n < 4; n++)
         {
-            root.getChildren().addAll(a.get(n), b.get(n), l.get(n));
+            root.getChildren().addAll(a.get(n), b.get(n), l.get(n), f.get(n));
         }
 
         Scene scene = new Scene(root, 300, 250);
