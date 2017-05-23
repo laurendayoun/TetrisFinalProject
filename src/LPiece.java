@@ -34,6 +34,18 @@ public class LPiece
         piece.add(p4);
     }
 
+    public void rotate()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            TetrisBlock a = piece.get(i);
+            int dx = 2*a.getx() - a.gety();
+            int dy = 2*a.gety() - a.getx();
+            a.move(dx, dy);
+            piece.set(i, a);
+        }
+    }
+
     public ArrayList<TetrisBlock> getpiece()
     {
         return piece;

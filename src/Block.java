@@ -35,6 +35,21 @@ public class Block
         piece.add(p4);
     }
 
+    public void rotate()
+    {
+        piece = piece;
+    }
+
+    public void moveleft()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            TetrisBlock a = piece.get(i);
+            a.move(20, 0);
+            piece.set(i, a);
+        }
+    }
+
     public ArrayList<TetrisBlock> getpiece()
     {
         return piece;

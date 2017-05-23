@@ -38,10 +38,15 @@ public class TetrisBlock extends Rectangle
         return yp;
     }
 
+
+
     public void move(int x, int y)
     {
         xp += x;
         yp += x;
+
+        this.setX(xp);
+        this.setY(yp);
     }
 
 }
