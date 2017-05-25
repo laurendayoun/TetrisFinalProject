@@ -41,20 +41,18 @@ public class TestRunner extends Application
 
         root.getChildren().add(btn);
 
+
+
         btn.setOnAction(new EventHandler<ActionEvent>()
         {
-            @Override
+            int dir = -1;
             public void handle(ActionEvent event)
             {
                 B.moveleft();
-                L.rotate();
-                ArrayList<TetrisBlock> bnew = B.getpiece();
-                ArrayList<TetrisBlock> lnew = L.getpiece();
+                L.rotate(dir);
+                F.moveright();
 
-                for (int n = 0; n<4;n++)
-                {
-                    root.getChildren().addAll(bnew.get(n), lnew.get(n));
-                }
+                dir = -1*dir;
             }
         });
 
