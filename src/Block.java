@@ -24,10 +24,10 @@ public class Block
 
     public Block(int centerx, int centery)
     {
-        TetrisBlock p1 = new TetrisBlock(Color.RED, 20, centerx + 10, centery + 10);
-        TetrisBlock p2 = new TetrisBlock(Color.RED, 20, centerx - 10, centery + 10);
-        TetrisBlock p3 = new TetrisBlock(Color.RED, 20, centerx + 10 , centery - 10);
-        TetrisBlock p4 = new TetrisBlock(Color.RED, 20, centerx - 10 , centery - 10);
+        TetrisBlock p1 = new TetrisBlock(Color.RED, 20, centerx, centery);
+        TetrisBlock p2 = new TetrisBlock(Color.RED, 20, centerx - 20, centery);
+        TetrisBlock p3 = new TetrisBlock(Color.RED, 20, centerx , centery - 20);
+        TetrisBlock p4 = new TetrisBlock(Color.RED, 20, centerx - 20 , centery - 20);
 
         piece.add(p1);
         piece.add(p2);
@@ -46,6 +46,16 @@ public class Block
         {
             TetrisBlock a = piece.get(i);
             a.move(20, 0);
+            piece.set(i, a);
+        }
+    }
+
+    public void moveright()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            TetrisBlock a = piece.get(i);
+            a.move(-20, 0);
             piece.set(i, a);
         }
     }

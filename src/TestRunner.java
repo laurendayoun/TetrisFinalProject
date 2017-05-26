@@ -32,11 +32,20 @@ public class TestRunner extends Application
         Mid F = new Mid(180, 80);
         ArrayList<TetrisBlock> f = F.getpiece();
 
+        JPiece J = new JPiece(20,180);
+        ArrayList<TetrisBlock> j = J.getpiece();
+
+        ZPiece Z = new ZPiece(60,160);
+        ArrayList<TetrisBlock> z = Z.getpiece();
+
+        SPiece S = new SPiece(240,100);
+        ArrayList<TetrisBlock> s = S.getpiece();
+
         Pane root = new Pane();
 
         for (int n = 0; n < 4; n++)
         {
-            root.getChildren().addAll(a.get(n), b.get(n), l.get(n), f.get(n));
+            root.getChildren().addAll(a.get(n), b.get(n), l.get(n), f.get(n), j.get(n), z.get(n), s.get(n));
         }
 
         root.getChildren().add(btn);
@@ -48,15 +57,27 @@ public class TestRunner extends Application
             int dir = -1;
             public void handle(ActionEvent event)
             {
+                if (dir < 1)
+                {
+                    F.rotate();
+                    J.rotate();
+                }
+                else
+                {
+                    F.moveright();
+                    J.moveleft();
+                }
                 B.moveleft();
-                L.rotate(dir);
-                F.moveright();
+                L.rotate();
+                H.rotate(dir);
+                Z.rotate(dir);
+                S.rotate(dir);
 
                 dir = -1*dir;
             }
         });
 
-        Scene scene = new Scene(root, 300, 250);
+        Scene scene = new Scene(root, 300, 300);
 
         primaryStage.setTitle("Testing!");
         primaryStage.setScene(scene);
