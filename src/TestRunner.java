@@ -59,8 +59,8 @@ public class TestRunner extends Application
             {
                 if (dir < 1)
                 {
-                    F.rotate();
-                    J.rotate();
+                    F.rotate(dir);
+                    J.rotate(dir);
                 }
                 else
                 {
@@ -68,7 +68,7 @@ public class TestRunner extends Application
                     J.moveleft();
                 }
                 B.moveleft();
-                L.rotate();
+                L.rotate(dir);
                 H.rotate(dir);
                 Z.rotate(dir);
                 S.rotate(dir);
@@ -77,7 +77,7 @@ public class TestRunner extends Application
             }
         });
 
-        Scene scene = new Scene(root, 300, 300);
+        Scene scene = new Scene(root, 300, 480);
 
         primaryStage.setTitle("Testing!");
         primaryStage.setScene(scene);

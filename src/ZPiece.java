@@ -4,12 +4,8 @@
 import javafx.scene.paint.Color;
 import java.util.ArrayList;
 
-public class ZPiece
+public class ZPiece extends TetrisPiece
 {
-    public ArrayList<TetrisBlock> piece = new ArrayList<TetrisBlock>();
-    public int cx;
-    public int cy;
-
     public ZPiece()
     {
         TetrisBlock pp1 = new TetrisBlock(Color.YELLOW, 20, 100, 140);
@@ -56,28 +52,4 @@ public class ZPiece
         }
     }
 
-    public void moveleft()
-    {
-        for (int i = 0; i < 4; i++)
-        {
-            TetrisBlock a = piece.get(i);
-            a.move(20, 0);
-            piece.set(i, a);
-        }
-    }
-
-    public void moveright()
-    {
-        for (int i = 0; i < 4; i++)
-        {
-            TetrisBlock a = piece.get(i);
-            a.move(-20, 0);
-            piece.set(i, a);
-        }
-    }
-
-    public ArrayList<TetrisBlock> getpiece()
-    {
-        return piece;
-    }
 }

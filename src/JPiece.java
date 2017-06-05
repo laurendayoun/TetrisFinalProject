@@ -4,13 +4,8 @@
 import java.util.ArrayList;
 import javafx.scene.paint.Color;
 
-public class JPiece
+public class JPiece extends TetrisPiece
 {
-    public ArrayList<TetrisBlock> piece = new ArrayList<TetrisBlock>();
-
-    public int cx;
-    public int cy;
-
     public JPiece()
     {
         TetrisBlock pp1 = new TetrisBlock(Color.PINK, 20, 140, 140);
@@ -43,7 +38,7 @@ public class JPiece
         cy = centery;
     }
 
-    public void rotate()
+    public void rotate(int dir)
     {
         for (int i = 0; i < 4; i++)
         {
@@ -57,29 +52,5 @@ public class JPiece
         }
     }
 
-    public void moveleft()
-    {
-        for (int i = 0; i < 4; i++)
-        {
-            TetrisBlock a = piece.get(i);
-            a.move(20, 0);
-            piece.set(i, a);
-        }
-    }
-
-    public void moveright()
-    {
-        for (int i = 0; i < 4; i++)
-        {
-            TetrisBlock a = piece.get(i);
-            a.move(-20, 0);
-            piece.set(i, a);
-        }
-    }
-
-    public ArrayList<TetrisBlock> getpiece()
-    {
-        return piece;
-    }
 }
 
