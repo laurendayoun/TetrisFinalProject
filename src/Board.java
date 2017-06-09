@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * Created by Lauren Oh on 6/5/2017.
  */
 
-public class Board
+public class Board extends Pane
 {
     public int[][] grid;
 
@@ -88,20 +88,32 @@ public class Board
         if (this.canmove(piece, 0,1))
         {
             this.removepiece(piece);
-            //piece.movedown;
+            piece.movedown();
             this.addpiece(piece);
         }
 
     }
 
-    public void rotate(TetrisPiece piece1, TetrisPiece piece2, int dir)
+    public void rotate(TetrisPiece piece1,  int dir)
     {
-        piece1.rotate(dir);
-        if (this.canmove(piece1, 0, 0))
-        {
-            this.removepiece(piece2);
+        ArrayList<TetrisBlock> parts = piece1.getpiece();
+        for (int i = 0; i < 4; i++)
+            {
+                TetrisBlock a = parts.get(i);
+                int x = piece1.getcx() - dir*piece1.getcy() + dir*a.gety();
+                int y = piece1.getcy() + dir*piece1.getcx() - dir*a.getx();
+                int dx = x - a.getx();
+                int dy = y - a.gety();
+                if (this.canmoveblock(a, dx, dy))
+                {
+                    continue;
+                }
+
+            }
+
+            this.removepiece(piece1);
+            piece1.rotate(dir);
             this.addpiece(piece1);
-        }
     }
 
     public boolean canmove(TetrisPiece piece, int hori, int verti)
@@ -109,14 +121,59 @@ public class Board
         ArrayList<TetrisBlock> parts = piece.getpiece();
         for (TetrisBlock block : parts)
         {
-            int x=  hori + block.getx()/20;
+            int x = hori + block.getx()/20;
             int y = verti + block.gety()/20;
+            if (x < 0 || x > 15 || y < 0 || y > 24)
+            {
+                return false;
+            }
             if (grid[x][y] == 1)
             {
                 return false;
             }
         }
         return true;
+    }
+
+    public boolean canmoveblock(TetrisBlock b, int hori, int verti)
+    {
+        int x = hori/20 + b.getx()/20;
+        int y = verti/20 + b.gety()/20;
+
+        if (x < 0 || x > 15 || y < 0 || y > 24)
+        {
+            return false;
+        }
+
+        if (grid[x][y] == 1)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean IsRowFull(int row)
+    {
+        for (int i = 0; i < 15; i++)
+        {
+            if (grid[i][row] == 0)
+            {
+                continue;
+            }
+
+            else
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public void clearrow()
+    {
+        if ()
     }
 
 }

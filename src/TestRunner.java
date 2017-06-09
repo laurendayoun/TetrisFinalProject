@@ -6,7 +6,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -41,7 +40,7 @@ public class TestRunner extends Application
         SPiece S = new SPiece(240,100);
         ArrayList<TetrisBlock> s = S.getpiece();
 
-        Pane root = new Pane();
+        Board root = new Board();
 
         for (int n = 0; n < 4; n++)
         {
@@ -59,19 +58,19 @@ public class TestRunner extends Application
             {
                 if (dir < 1)
                 {
-                    F.rotate(dir);
-                    J.rotate(dir);
+                    root.rotate(F, dir);
                 }
                 else
                 {
-                    F.moveright();
-                    J.moveleft();
+                    root.moveright(F);
+                    root.moveleft(J);
                 }
-                B.moveleft();
-                L.rotate(dir);
-                H.rotate(dir);
-                Z.rotate(dir);
-                S.rotate(dir);
+
+                root.moveright(B);
+                root.rotate(L, dir);
+                root.movedown(H);
+                root.moveright(Z);
+                root.movedown(S);
 
                 dir = -1*dir;
             }

@@ -9,6 +9,16 @@ public abstract class TetrisPiece
     public int cx;
     public int cy;
 
+    public int getcx()
+    {
+        return cx;
+    }
+
+    public int getcy()
+    {
+        return cy;
+    }
+
     public void moveleft()
     {
         for (int i = 0; i < 4; i++)
@@ -25,6 +35,16 @@ public abstract class TetrisPiece
         {
             TetrisBlock a = piece.get(i);
             a.move(20, 0);
+            piece.set(i, a);
+        }
+    }
+
+    public void movedown()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            TetrisBlock a = piece.get(i);
+            a.move(0,20);
             piece.set(i, a);
         }
     }
